@@ -18,17 +18,16 @@ kayenta:
           - OBJECT_STORE
           - CONFIGURATION_STORE
 
+  memory:
+    enabled: true
+    accounts:
+      - name: in-memory-store-account
+        supportedTypes:
+          - OBJECT_STORE
+
   s3:
     enabled: true
 
-  prometheus:
-    enabled: true
-    accounts:
-      - name: prometheus-account
-        endpoint:
-          baseUrl: http://localhost:${embedded.prometheus.port}
-        supportedTypes:
-          - METRICS_STORE
 server:
   port: 8080
 
@@ -39,3 +38,8 @@ management:
   endpoint.health.show-details: always
   server:
     port: 8081
+
+# Disable checking Auth headers to external resources (pollutes logs with lots of warnings)
+ok-http-client:
+  interceptor:
+    skip-header-check: true

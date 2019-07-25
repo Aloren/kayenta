@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.netflix.kayenta;
+package com.netflix.kayenta.tests;
 
 import io.restassured.RestAssured;
 import org.junit.Test;
